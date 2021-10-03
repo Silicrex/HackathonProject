@@ -40,7 +40,7 @@ def logout():
 @app.route('/resources')
 def resources():
     posts = Resources.query.all()
-    return render_template('resource_posts.html', posts=posts)
+    return render_template('resource_repo.html', posts=posts)
 
 
 @app.route('/stats')

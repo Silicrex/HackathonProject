@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hello world!</h1>
+    <h1>Welcome to Safety Forms!</h1>
+    <h3>Check out our <a href="resources">Community Resource Page</a>! We feature Articles to promote safety awareness.</h3>
+    <h3>Have feedback? We have six distinct <a href="forms">Feedback Forms</a>, which go directly to administration.</h3>
+    <h3>All information on Safety Forms is private and protected. Only site administration can view submissions.</h3>
+    <h3>DISCLAIMER: ALL RESPONSES ARE ACCESSIBLE BY ALL ADMINISTRATORS </h3>
 <style>
     h1, h3 {
         text-align: center;
     }
 </style>
-<h3> a </h3>
     {% for post in posts %}
     <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
     {% endfor %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Safety Resource Submissions</h1>
+    <h1>Safety Resources</h1>
 <style>
     h1 {
         text-align: center;
@@ -9,6 +9,6 @@
 </style>
     <hr>
     {% for post in posts %}
-        {% include '_post.html' %}
+        {% include '_resourcepost.html' %}
     {% endfor %}
 {% endblock %}
