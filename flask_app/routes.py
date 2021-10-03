@@ -36,6 +36,11 @@ def logout():
     return redirect(url_for('index'))
 
 
+@app.route('/resources')
+def resources():
+    return render_template('index.html')
+
+
 @app.route('/stats')
 @login_required
 def stats():
@@ -47,7 +52,7 @@ def forms():
     return render_template('forms.html')
 
 
-@app.route('/physhealth')
+@app.route('/physical')
 def phys_health_form():
     form = GeneralForm()
     if form.validate_on_submit():
@@ -59,6 +64,76 @@ def phys_health_form():
         flash('Post successful!')
         return redirect(url_for('forms'))
     return render_template('phys_health_form.html', form=form)
+
+
+@app.route('/mental')
+def mental_health_form():
+    form = GeneralForm()
+    if form.validate_on_submit():
+        name = form.name.data or 'Anonymous'
+        contact = form.contact.data or 'No Response'
+        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        db.session.add(submission)
+        db.session.commit()
+        flash('Post successful!')
+        return redirect(url_for('forms'))
+    return render_template('mental_health_form.html', form=form)
+
+
+@app.route('/hazard')
+def hazard_report_form():
+    form = GeneralForm()
+    if form.validate_on_submit():
+        name = form.name.data or 'Anonymous'
+        contact = form.contact.data or 'No Response'
+        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        db.session.add(submission)
+        db.session.commit()
+        flash('Post successful!')
+        return redirect(url_for('forms'))
+    return render_template('hazard_report.html', form=form)
+
+
+@app.route('/diversity')
+def diversity_form():
+    form = GeneralForm()
+    if form.validate_on_submit():
+        name = form.name.data or 'Anonymous'
+        contact = form.contact.data or 'No Response'
+        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        db.session.add(submission)
+        db.session.commit()
+        flash('Post successful!')
+        return redirect(url_for('forms'))
+    return render_template('diversity_feedback.html', form=form)
+
+
+@app.route('/resourceform')
+def resource_form():
+    form = GeneralForm()
+    if form.validate_on_submit():
+        name = form.name.data or 'Anonymous'
+        contact = form.contact.data or 'No Response'
+        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        db.session.add(submission)
+        db.session.commit()
+        flash('Post successful!')
+        return redirect(url_for('forms'))
+    return render_template('health_resource.html', form=form)
+
+
+@app.route('/misc')
+def misc_form():
+    form = GeneralForm()
+    if form.validate_on_submit():
+        name = form.name.data or 'Anonymous'
+        contact = form.contact.data or 'No Response'
+        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        db.session.add(submission)
+        db.session.commit()
+        flash('Post successful!')
+        return redirect(url_for('forms'))
+    return render_template('misc_request.html', form=form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
