@@ -1,6 +1,6 @@
 from flask_app import app, db
 from flask_app.models import (User, PhysicalSubmission, MentalSubmission, HazardSubmission,
-                              DiversitySubmission, ResourceSubmission, MiscSubmission)
+                              DiversitySubmission, ResourceSubmission, MiscSubmission, Resources)
 from flask import render_template, flash, redirect, url_for, request
 from flask_app.forms import LoginForm, RegistrationForm, GeneralForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -39,13 +39,14 @@ def logout():
 
 @app.route('/resources')
 def resources():
-    return render_template('index.html')
+    posts = Resources.query.all()
+    return render_template('resource_posts.html', posts=posts)
 
 
 @app.route('/stats')
 @login_required
 def stats():
-    return render_template('index.html')
+    return render_template('stats.html')
 
 
 @app.route('/forms')
@@ -71,7 +72,6 @@ def phys_health_form():
 @login_required
 def physical_posts():
     posts = PhysicalSubmission.query.all()
-    print(posts)
     return render_template('physical_posts.html', posts=posts)
 
 
@@ -93,7 +93,6 @@ def mental_health_form():
 @login_required
 def mental_posts():
     posts = MentalSubmission.query.all()
-    print(posts)
     return render_template('mental_posts.html', posts=posts)
 
 
@@ -115,7 +114,6 @@ def hazard_report_form():
 @login_required
 def hazard_posts():
     posts = HazardSubmission.query.all()
-    print(posts)
     return render_template('hazard_posts.html', posts=posts)
 
 
@@ -137,7 +135,6 @@ def diversity_form():
 @login_required
 def diversity_posts():
     posts = DiversitySubmission.query.all()
-    print(posts)
     return render_template('diversity_posts.html', posts=posts)
 
 
@@ -159,7 +156,6 @@ def resource_form():
 @login_required
 def resource_posts():
     posts = ResourceSubmission.query.all()
-    print(posts)
     return render_template('resource_posts.html', posts=posts)
 
 
@@ -181,7 +177,6 @@ def misc_form():
 @login_required
 def misc_posts():
     posts = MiscSubmission.query.all()
-    print(posts)
     return render_template('misc_posts.html', posts=posts)
 
 

@@ -103,3 +103,12 @@ class MiscSubmission(db.Model):
 
     def __repr__(self):
         return (f'{self.id=}, {self.name=}, {self.contact=}, {self.body=}')
+
+
+class Resources(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(64))  # Optional identification
+    desc = db.Column(db.String(128))  # Optional identification
+
+    def __repr__(self):
+        return (f'{self.id=}, {self.url=}, {self.desc=}')

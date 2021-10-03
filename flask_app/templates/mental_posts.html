@@ -2,6 +2,11 @@
 
 {% block content %}
     <h1>Mental Health Submissions</h1>
+<style>
+    h1 {
+        text-align: center;
+    }
+</style>
     <hr>
     {% for post in posts %}
         {% include '_post.html' %}
