@@ -1,5 +1,5 @@
 from flask_app import app, db
-from flask_app.models import (User, Post, PhysicalSubmission, MentalSubmission, HazardSubmission,
+from flask_app.models import (User, PhysicalSubmission, MentalSubmission, HazardSubmission,
                               DiversitySubmission, ResourceSubmission, MiscSubmission, Resources)
 
 

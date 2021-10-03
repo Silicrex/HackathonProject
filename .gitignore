@@ -1,6 +1,4 @@
 .idea
 venv
-app.db
 __pycache__
 flask_app/__pycache__
-app.db
