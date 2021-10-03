@@ -33,8 +33,18 @@ class Post(db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=Datetime.utcnow)  # Function call given
     password_hash = db.Column(db.String(128))
-
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+
+class FormSubmission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))  # Optional identification
+    contact = db.Column(db.String(64))  # Optional contact
+    body = db.Column(db.String(2000))
+    timestamp = db.Column(db.DateTime, index=True, default=Datetime.utcnow)  # Function call given
+
+    def __repr__(self):
+        return '<Paragraph {}>'.format(self.body)

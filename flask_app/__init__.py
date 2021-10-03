@@ -9,5 +9,6 @@ app.config.from_object(Config)  # Load config from Config class
 db = SQLAlchemy(app)  # Database instance
 migrate = Migrate(app, db)  # Migration engine instance
 login = LoginManager(app)  # Login handler instance
+login.login_view = 'login'  # Inform Flask-Login of the login view function
 
 from flask_app import routes, models  # Import below to avoid circular import
