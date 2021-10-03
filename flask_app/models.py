@@ -39,7 +39,7 @@ class Post(db.Model):
         return '<Post {}>'.format(self.body)
 
 
-class FormSubmission(db.Model):
+class PhysicalSubmission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))  # Optional identification
     contact = db.Column(db.String(64))  # Optional contact
@@ -47,4 +47,59 @@ class FormSubmission(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=Datetime.utcnow)  # Function call given
 
     def __repr__(self):
-        return '<Paragraph {}>'.format(self.body)
+        return (f'{self.id=}, {self.name=}, {self.contact=}, {self.body=}')
+
+
+class MentalSubmission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))  # Optional identification
+    contact = db.Column(db.String(64))  # Optional contact
+    body = db.Column(db.String(2000))
+    timestamp = db.Column(db.DateTime, index=True, default=Datetime.utcnow)  # Function call given
+
+    def __repr__(self):
+        return (f'{self.id=}, {self.name=}, {self.contact=}, {self.body=}')
+
+
+class HazardSubmission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))  # Optional identification
+    contact = db.Column(db.String(64))  # Optional contact
+    body = db.Column(db.String(2000))
+    timestamp = db.Column(db.DateTime, index=True, default=Datetime.utcnow)  # Function call given
+
+    def __repr__(self):
+        return (f'{self.id=}, {self.name=}, {self.contact=}, {self.body=}')
+
+
+class DiversitySubmission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))  # Optional identification
+    contact = db.Column(db.String(64))  # Optional contact
+    body = db.Column(db.String(2000))
+    timestamp = db.Column(db.DateTime, index=True, default=Datetime.utcnow)  # Function call given
+
+    def __repr__(self):
+        return (f'{self.id=}, {self.name=}, {self.contact=}, {self.body=}')
+
+
+class ResourceSubmission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))  # Optional identification
+    contact = db.Column(db.String(64))  # Optional contact
+    body = db.Column(db.String(2000))
+    timestamp = db.Column(db.DateTime, index=True, default=Datetime.utcnow)  # Function call given
+
+    def __repr__(self):
+        return (f'{self.id=}, {self.name=}, {self.contact=}, {self.body=}')
+
+
+class MiscSubmission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))  # Optional identification
+    contact = db.Column(db.String(64))  # Optional contact
+    body = db.Column(db.String(2000))
+    timestamp = db.Column(db.DateTime, index=True, default=Datetime.utcnow)  # Function call given
+
+    def __repr__(self):
+        return (f'{self.id=}, {self.name=}, {self.contact=}, {self.body=}')

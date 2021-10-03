@@ -1,0 +1,13 @@
+    <table class="table table-hover">
+        <tr>
+            </td>
+             <td>
+                <b>Name:</b> {{ post.name }}<br>
+               <b>Contact:</b> {{ post.contact }}
+                <br>
+                {{ post.body }}
+                <br><br>
+                <b>Timestamp:</b> {{ post.timestamp.strftime("%m/%d/%Y, %H:%M:%S") }} UTC
+            </td>
+        </tr>
+    </table>

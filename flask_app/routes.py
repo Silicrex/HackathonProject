@@ -1,5 +1,6 @@
 from flask_app import app, db
-from flask_app.models import User, FormSubmission
+from flask_app.models import (User, PhysicalSubmission, MentalSubmission, HazardSubmission,
+                              DiversitySubmission, ResourceSubmission, MiscSubmission)
 from flask import render_template, flash, redirect, url_for, request
 from flask_app.forms import LoginForm, RegistrationForm, GeneralForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -52,88 +53,136 @@ def forms():
     return render_template('forms.html')
 
 
-@app.route('/physical')
+@app.route('/physical', methods=['GET', 'POST'])
 def phys_health_form():
     form = GeneralForm()
     if form.validate_on_submit():
         name = form.name.data or 'Anonymous'
         contact = form.contact.data or 'No Response'
-        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        submission = PhysicalSubmission(name=name, contact=contact, body=form.body.data)
         db.session.add(submission)
         db.session.commit()
         flash('Post successful!')
-        return redirect(url_for('forms'))
+        return redirect(url_for('phys_health_form'))
     return render_template('phys_health_form.html', form=form)
 
 
-@app.route('/mental')
+@app.route('/physicalposts')
+@login_required
+def physical_posts():
+    posts = PhysicalSubmission.query.all()
+    print(posts)
+    return render_template('physical_posts.html', posts=posts)
+
+
+@app.route('/mental', methods=['GET', 'POST'])
 def mental_health_form():
     form = GeneralForm()
     if form.validate_on_submit():
         name = form.name.data or 'Anonymous'
         contact = form.contact.data or 'No Response'
-        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        submission = MentalSubmission(name=name, contact=contact, body=form.body.data)
         db.session.add(submission)
         db.session.commit()
         flash('Post successful!')
-        return redirect(url_for('forms'))
+        return redirect(url_for('mental_health_form'))
     return render_template('mental_health_form.html', form=form)
 
 
-@app.route('/hazard')
+@app.route('/mentalposts')
+@login_required
+def mental_posts():
+    posts = MentalSubmission.query.all()
+    print(posts)
+    return render_template('mental_posts.html', posts=posts)
+
+
+@app.route('/hazard', methods=['GET', 'POST'])
 def hazard_report_form():
     form = GeneralForm()
     if form.validate_on_submit():
         name = form.name.data or 'Anonymous'
         contact = form.contact.data or 'No Response'
-        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        submission = HazardSubmission(name=name, contact=contact, body=form.body.data)
         db.session.add(submission)
         db.session.commit()
         flash('Post successful!')
-        return redirect(url_for('forms'))
+        return redirect(url_for('hazard_report_form'))
     return render_template('hazard_report.html', form=form)
 
 
-@app.route('/diversity')
+@app.route('/hazardposts')
+@login_required
+def hazard_posts():
+    posts = HazardSubmission.query.all()
+    print(posts)
+    return render_template('hazard_posts.html', posts=posts)
+
+
+@app.route('/diversity', methods=['GET', 'POST'])
 def diversity_form():
     form = GeneralForm()
     if form.validate_on_submit():
         name = form.name.data or 'Anonymous'
         contact = form.contact.data or 'No Response'
-        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        submission = DiversitySubmission(name=name, contact=contact, body=form.body.data)
         db.session.add(submission)
         db.session.commit()
         flash('Post successful!')
-        return redirect(url_for('forms'))
+        return redirect(url_for('diversity_form'))
     return render_template('diversity_feedback.html', form=form)
 
 
-@app.route('/resourceform')
+@app.route('/diversityposts')
+@login_required
+def diversity_posts():
+    posts = DiversitySubmission.query.all()
+    print(posts)
+    return render_template('diversity_posts.html', posts=posts)
+
+
+@app.route('/resourceform', methods=['GET', 'POST'])
 def resource_form():
     form = GeneralForm()
     if form.validate_on_submit():
         name = form.name.data or 'Anonymous'
         contact = form.contact.data or 'No Response'
-        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        submission = ResourceSubmission(name=name, contact=contact, body=form.body.data)
         db.session.add(submission)
         db.session.commit()
         flash('Post successful!')
-        return redirect(url_for('forms'))
+        return redirect(url_for('resource_form'))
     return render_template('health_resource.html', form=form)
 
 
-@app.route('/misc')
+@app.route('/resourceposts')
+@login_required
+def resource_posts():
+    posts = ResourceSubmission.query.all()
+    print(posts)
+    return render_template('resource_posts.html', posts=posts)
+
+
+@app.route('/misc', methods=['GET', 'POST'])
 def misc_form():
     form = GeneralForm()
     if form.validate_on_submit():
         name = form.name.data or 'Anonymous'
         contact = form.contact.data or 'No Response'
-        submission = FormSubmission(name=name, contact=contact, body=form.body.data)
+        submission = MiscSubmission(name=name, contact=contact, body=form.body.data)
         db.session.add(submission)
         db.session.commit()
         flash('Post successful!')
-        return redirect(url_for('forms'))
+        return redirect(url_for('misc_form'))
     return render_template('misc_request.html', form=form)
+
+
+@app.route('/miscposts')
+@login_required
+def misc_posts():
+    posts = MiscSubmission.query.all()
+    print(posts)
+    return render_template('misc_posts.html', posts=posts)
 
 
 @app.route('/register', methods=['GET', 'POST'])

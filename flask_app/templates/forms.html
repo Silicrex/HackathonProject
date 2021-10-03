@@ -1,5 +1,63 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
     <h1>Forms!</h1>
+<div>
+    <div class="input-row">
+     <div class="input-group">
+        <a class="button" href="physical">Physical Concern</a>
+      </div>
+        <div class="input-group">
+          <a class="button" href="mental">Mental Concern</a>
+        </div>
+      </div>
+    <div class="input-row">
+     <div class="input-group">
+        <a class="button" href="hazard">Hazard Report</a>
+      </div>
+        <div class="input-group">
+          <a class="button" href="diversity">Diversity Suggestion</a>
+        </div>
+      </div>
+    <div class="input-row">
+     <div class="input-group">
+         <a class="button" href="resourceform">Resource Submission</a>
+      </div>
+        <div class="input-group">
+          <a class="button" href="misc">Misc Form</a>
+        </div>
+      </div>
+
+</div>
+</div>
+<style>
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #7aa8b7;
+        border-radius: 6px;
+        outline: none;
+      }
+
+}
+
+.container{
+    width: 10%;
+    margin: 50px auto;
+    justify-content: center;
+}
+.input-row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.input-row .input-group{
+    flex-basis: 45%;
+}
+    </style>
 {% endblock %}

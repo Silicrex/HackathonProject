@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Diversity Suggestions</h1>
+    <hr>
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+{% endblock %}
