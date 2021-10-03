@@ -1,6 +1,13 @@
 # Safety Forms
 A one-stop location for safety awareness in Physical Safety, Mental Health, and Diversity. Submit feedback forms regarding safety concerns! Also see community resources page!
 
+# Usage note
+
+Way to add resources to Resources page not currently implemented through interface. Can manually fill out and run in flask shell:
+`x = Resources(url='', desc='')`
+`db.session.add(x)`
+`db.session.commit()`
+
 ## Inspiration
 
 * We were inspired by a single word: continuous. Demonstrated through ConocoPhillips’ SPIRIT values, we wanted to create a product that, also, consistently and continually maintained safety standards. 
