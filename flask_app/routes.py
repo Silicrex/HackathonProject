@@ -2,7 +2,7 @@ from flask_app import app
 from flask_app.models import User
 from flask import render_template, flash, redirect, url_for
 from flask_app.forms import LoginForm
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 
 
 @app.route('/')
@@ -25,3 +25,9 @@ def login():  # Login page
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('index'))
     return render_template('login.html', titlw='Sign In', form=form)  # Validation errors will print
+
+
+@app.route('/logout')  # Only visible if logged in
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
