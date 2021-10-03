@@ -4,15 +4,15 @@ from flask_app.forms import LoginForm
 
 
 @app.route('/')
-def index():
+def index():  # Home page
     user = {'username: Admin'}
     return render_template('index.html', title='Home', user=user)
 
 
 @app.route('/login', methods=['GET', 'POST'])
-def login():
+def login():  # Login page
     form = LoginForm()
     if form.validate_on_submit():
         flash(f'Login success')
         return redirect(url_for('index'))
-    return render_template('login.html', titlw='Sign In', form=form)
+    return render_template('login.html', titlw='Sign In', form=form)  # Validation errors will print
