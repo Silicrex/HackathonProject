@@ -1,6 +1,9 @@
 # Safety Forms
 A one-stop location for safety awareness in Physical Safety, Mental Health, and Diversity. Submit feedback forms regarding safety concerns! Also see community resources page!
 
+#
+Hugely based on the concepts taught by Miguel Grinberg's Flask Mega-Tutorial! https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+
 # Usage note
 
 Way to add resources to Resources page not currently implemented through interface. Can manually fill out and run in flask shell:
